@@ -13,7 +13,8 @@ def setup_theia():
         full_path = shutil.which('theia')
         if not full_path:
             raise FileNotFoundError('Can not find theia executable in $PATH')
-        return ['theia', 'start', '.', '--hostname=127.0.0.1', '--port=' + str(port)]
+        return ['yarn', '--cwd={full_path}'.format(full_path=full_path), 'theia', 
+                'start', '.', '--hostname=127.0.0.1', '--port=' + str(port)]
 
     return {
         'command': _theia_command,
